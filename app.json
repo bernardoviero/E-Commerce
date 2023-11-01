@@ -25,6 +25,22 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "fonts": [
+        {
+          "name": "IBMPlexSans-SemiBold",
+          "asset": "./assets/fonts/IBM/IBMPlexSans-SemiBold.ttf",
+          "fontWeight": "400",
+          "style": "normal"
+        },
+        {
+          "name": "IBMPlexSans-Regular",
+          "asset": "./assets/fonts/IBM/IBMPlexSans-Regular.ttf",
+          "fontWeight": "200",
+          "style": "normal"
+        }
+      ]
     }
   }
 }
