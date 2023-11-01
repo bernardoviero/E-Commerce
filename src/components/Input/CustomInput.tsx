@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { KeyboardTypeOptions, StyleSheet, TextInput, Text, View } from 'react-native';
-import { PortalContext } from 'react-native-paper/lib/typescript/components/Portal/PortalHost';
+import { colors } from '../../styles/theme/colors'
 
 interface CustomInputProps {
     label: string;
@@ -19,15 +19,15 @@ const CustomInput: React.FC<CustomInputProps> = ({ marginBottom = 30, label, typ
             height: 60,
             marginBottom: marginBottom,
             borderWidth: 1,
-            borderColor: '#E9E9E9',
-            color: '#545454',
+            borderColor: colors.backgroundInput,
+            color: colors.greyText,
         },
         text: {
             fontSize: 16,
-            color: '#E9E9E9',
-            fontWeight: '500',
+            color: colors.backgroundInput,
             marginBottom: 10,
             marginLeft: 10,
+            fontFamily: 'IBMPlexSans-SemiBold',
         }
     });
 
@@ -38,12 +38,12 @@ const CustomInput: React.FC<CustomInputProps> = ({ marginBottom = 30, label, typ
             </Text>
             <TextInput
                 style={styles.input}
-                cursorColor="#000"
+                cursorColor={colors.defautText}
                 keyboardType={type}
                 maxLength={length}
                 secureTextEntry={password}
                 placeholder={placeHolder}
-                placeholderTextColor="#bdbebd"
+                placeholderTextColor={colors.placeholderInput}
             />
         </View>
     );
