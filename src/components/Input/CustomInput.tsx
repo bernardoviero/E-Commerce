@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import { KeyboardTypeOptions, StyleSheet, TextInput, Text, View } from 'react-native';
 import { colors } from '../../styles/theme/colors'
 
@@ -9,10 +9,13 @@ interface CustomInputProps {
     length?: number;
     password?: boolean;
     marginBottom?: number;
+    onChangeText?: (text: string) => void;
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({ marginBottom = 30, label, type, length = 255, password = false, placeHolder }) => {
-    const styles = StyleSheet.create({
+  const [inputValue, setInputValue] = useState('');
+
+  const styles = StyleSheet.create({
         input: {
             borderRadius: 12,
             padding: 15,
@@ -31,12 +34,17 @@ const CustomInput: React.FC<CustomInputProps> = ({ marginBottom = 30, label, typ
         }
     });
 
+    const onChangeText = (text: string) => {
+      setInputValue(text);
+    };
+
     return (
         <View>
             <Text style={styles.text}>
                 {label}
             </Text>
             <TextInput
+                onChangeText={onChangeText}
                 style={styles.input}
                 cursorColor={colors.defautText}
                 keyboardType={type}

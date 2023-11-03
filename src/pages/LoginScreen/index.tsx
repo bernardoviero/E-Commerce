@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, SafeAreaView, Text } from 'react-native';
 import Header from '../../components/Header/CustomHeader';
 import CustomInput from '../../components/Input/CustomInput';
@@ -6,14 +6,21 @@ import CustomButton from '../../components/Button/CustomButton';
 import { colors } from '../../styles/theme/colors'
 
 const App = () => {
+  const[email, setEmail] = useState('');
+  
+  const handleTextChange = (text: string) =>{
+    setEmail(text);
+    console.log(email);
+  }
+
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
 			<Header />
 			<View style={styles.container}>
 				<Text style={styles.textTitle}>Login</Text>
 				<View style={styles.inputContainer}>
-					<CustomInput placeHolder="Your email or phone" label="E-mail" type="email-address" />
-					<CustomInput marginBottom={10} placeHolder="Password" label="Senha" password={true} />
+					<CustomInput placeHolder="Your email or phone" label="E-mail" type="email-address" onChangeText={handleTextChange}/>
+					{/* <CustomInput marginBottom={10} placeHolder="Password" label="Senha" password={true} /> */}
 				</View>
 				<View style={styles.buttonForgotPassword}>
 					<CustomButton fontSize={14} fontColor={colors.primaryColor} title="Forgot Password?" />
