@@ -1,29 +1,52 @@
-import React from 'react';
-import { View, StyleSheet, SafeAreaView, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, SafeAreaView, Text, Alert } from 'react-native';
 import Header from '../../components/Header/CustomHeader';
 import CustomInput from '../../components/Input/CustomInput';
 import CustomButton from '../../components/Button/CustomButton';
 import { colors } from '../../styles/theme/colors'
 
 const App = () => {
+  const[email, setEmail] = useState('');
+  const[password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
+  const handleButtonLoginPress = () => {
+    setEmailError(email === '');
+    setPasswordError(password === '');
+    if (email === 'bernardo' && password === '1234') {
+      alert('Login Sucess!')
+    }
+  };
+
+  const handleEmailChange = (text: string) => {
+    setEmail(text);
+    setEmailError(false);
+  };
+
+  const handlePasswordChange = (text: string) => {
+    setPassword(text);
+    setPasswordError(false);
+  };
+
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
 			<Header />
 			<View style={styles.container}>
 				<Text style={styles.textTitle}>Login</Text>
 				<View style={styles.inputContainer}>
-					<CustomInput placeHolder="Your email or phone" label="E-mail" type="email-address" />
-					<CustomInput marginBottom={10} placeHolder="Password" label="Senha" password={true} />
+					<CustomInput placeHolder="Your email or phone" label="E-mail" type="email-address"  onChangeText={handleEmailChange} required error={emailError}/>
+					<CustomInput marginBottom={10} placeHolder="Password" label="Senha" password={true} onChangeText={handlePasswordChange} required error={passwordError}/>
 				</View>
 				<View style={styles.buttonForgotPassword}>
 					<CustomButton fontSize={14} fontColor={colors.primaryColor} title="Forgot Password?" />
 				</View>
 				<View style={styles.buttonLogin}>
-					<CustomButton fontSize={16} fontColor={colors.backgroundScreen} title="LOGIN" backGroundColor={colors.secondaryColor} />
+					<CustomButton fontSize={16} fontColor={colors.backgroundScreen} title="LOGIN" backGroundColor={colors.secondaryColor} onPress={handleButtonLoginPress}/>
 				</View>
 				<View style={styles.buttonSignUp}>
 					<Text>Don't have an account?</Text>
-					<CustomButton fontColor={colors.primaryColor} title="Sign Up" />
+					<CustomButton fontColor={colors.primaryColor} title="Sign Up"/>
 				</View>
 			</View>
 		</SafeAreaView>
