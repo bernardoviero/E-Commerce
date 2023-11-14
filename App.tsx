@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as Font from 'expo-font';
-import LoginScreen from './src/pages/LoginScreen';
+import Login from './src/pages/LoginScreen';
 
 const App = () => {
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -21,9 +21,7 @@ const App = () => {
     return null;
   }
 
-  return (
-    <LoginScreen />
-  );
+  return <Login />;
 };
 
 export default App;

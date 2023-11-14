@@ -1,5 +1,4 @@
-import { SafeAreaView, Text, StyleSheet } from 'react-native';
-
+import { SafeAreaView, Text, StyleSheet, View } from 'react-native';
 
 const App = () => {
   return (
@@ -19,7 +18,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 38,
-    fontFamily: 'IBMPlexSans-SemiBold',
+    fontFamily: 'IBMPlexSans-Bold',
   }
 })
 

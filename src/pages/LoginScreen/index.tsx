@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, SafeAreaView, Text, Alert } from 'react-native';
+import { View, StyleSheet, SafeAreaView, Text } from 'react-native';
 import Header from '../../components/Header/CustomHeader';
 import CustomInput from '../../components/Input/CustomInput';
 import CustomButton from '../../components/Button/CustomButton';
 import { colors } from '../../styles/theme/colors'
+import { useRouter } from "expo-router";
 
 const App = () => {
+	const router = useRouter();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [emailError, setEmailError] = useState(false);
@@ -15,7 +17,7 @@ const App = () => {
 		setEmailError(email === '');
 		setPasswordError(password === '');
 		if (email === 'bernardo' && password === '1234') {
-			alert('Login Sucess!')
+			router.push('HomeScreen');
 		}
 	};
 
@@ -55,7 +57,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		top: 180,
+		top: 160,
 		padding: 20,
 		width: '100%',
 	},
