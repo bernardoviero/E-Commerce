@@ -4,10 +4,17 @@ import Header from '../../components/Header/CustomHeader';
 import CustomInput from '../../components/Input/CustomInput';
 import CustomButton from '../../components/Button/CustomButton';
 import { colors } from '../../styles/theme/colors'
-import { useRouter } from "expo-router";
+import { StackNavigationProp } from '@react-navigation/stack'; 
+import { RouteProp } from '@react-navigation/native';
 
-const App = () => {
-	const router = useRouter();
+type RootStackParamList = {
+	Home: undefined;
+  };
+  
+  type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+  type LoginScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
+
+  const Login: React.FC<{ navigation: LoginScreenNavigationProp }> = ({ navigation }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [emailError, setEmailError] = useState(false);
@@ -17,7 +24,7 @@ const App = () => {
 		setEmailError(email === '');
 		setPasswordError(password === '');
 		if (email === 'bernardo' && password === '1234') {
-			router.push('HomeScreen');
+			navigation.navigate('Home'); 
 		}
 	};
 
@@ -86,4 +93,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default App;
+export default Login;
